@@ -1,22 +1,22 @@
 import { Products } from "./componets/products";
 import {products as allProducts} from "./componets/data.json";
-import { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Header } from "./hearder";
-export function App() {
-const [filters, setFilters] = useState({
-  filterCategory: 'all',
-  minPrice: 0
-})
+import {Footer} from './Footer'
+import { IS_DEVELOPMENT } from "./config";
+import { useFilters } from "./hooks/useFilters";
+import { Cart } from "./componets/Cart";
 
-function filteredProducts(products) {
-  return products.filter(product=>{
-    return (product.price >= filters.minPrice && (filters.filterCategory === 'all' || product.category === filters.filterCategory))
-  })
-}
+export function App() {
+const [products] = useState(allProducts)
+const {filteredProducts} = useFilters()
   return (
     <>
       <Header/>
-      <Products list={filteredProducts(allProducts)}></Products>
+      <Cart/>
+      <Products list={filteredProducts(products)}></Products>
+      {IS_DEVELOPMENT && <Footer/>}
+      
     </>
   )
 }
