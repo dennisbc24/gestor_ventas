@@ -12,7 +12,9 @@ const [products] = useState(allProducts)
 const {filteredProducts} = useFilters()
   return (
     <>
-      <Header/>
+      <Header>
+       
+      </Header>
       <Cart/>
       <Products list={filteredProducts(products)}></Products>
       {IS_DEVELOPMENT && <Footer/>}
