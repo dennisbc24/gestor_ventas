@@ -6,5 +6,7 @@ export const useCart = () => {
     if (context === 'undefined') {
         throw new Error('useCart hasnt access to context')
     }
+    
     return context
+
 }

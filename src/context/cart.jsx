@@ -6,12 +6,21 @@ export const CartProvider = ({children}) => {
 
     const [cart, setCart] = useState([]) 
 
-    const addToCart = product  =>{
-        cart.map((item)=>{
-            if (item.id_product != product.id_product) {
-                setCart([...cart, product])
-            }
-        })}
+    const addToCart = (product)  =>{
+        const newItem = {
+            id_product:product.id_product,
+            imageUrl:product.imageUrl,
+            name:product.name,
+            price:product.price,
+            quantity: 6
+        }
+        if (cart.includes(product)) {
+            console.log('ya esta en el carrito');
+        }else{
+            setCart([...cart, newItem])
+        }
+     
+    }
     const clearCart = () =>{
         setCart([])
     }

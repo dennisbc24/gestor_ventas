@@ -1,9 +1,13 @@
 import "./data.json";
 import "./products.css"
 import addCartIcon from '../icons/addToCart.png'
-import { useCart } from "../hooks/useCart";
+import { useCart } from '../hooks/useCart'
+
 export const Products = ({list}) => {
     const {addToCart} = useCart()
+    const prueba  = () => { 
+        console.log(addToCart);
+        console.log('hola')}
     return (
         <main className="list_products">
             <ul>
@@ -23,7 +27,7 @@ export const Products = ({list}) => {
                                 })}
                             </div>
                             <div>
-                                <button onClick={addToCart(item)}>
+                                <button onClick={() => addToCart(item)}>
                                     <img src={addCartIcon} alt="add product to cart" />
                                 </button>
                             </div>
