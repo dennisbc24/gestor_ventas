@@ -6,6 +6,8 @@
     right: 0;
     padding: 32px;
     background-color: #0a1937;
+    justify-content: center;
+    flex-direction: column;
 }
 .cart-button{
     align-items: center;
@@ -46,5 +48,5 @@
 
 .cart-button ~ input:checked ~ .cart{
     height: 100%;
-    display: block;
+    display: flex;
 }
