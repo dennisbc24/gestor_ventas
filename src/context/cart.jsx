@@ -14,7 +14,9 @@ export const CartProvider = ({children}) => {
             price:product.price,
             quantity: 6
         }
-        if (cart.includes(product)) {
+        
+        if (product.id_product === newItem.id_product) {
+            product.quantity = product.quantity + 1
             console.log('ya esta en el carrito');
         }else{
             setCart([...cart, newItem])
