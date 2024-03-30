@@ -3,9 +3,28 @@ import  cartIcon  from "../icons/cart.png";
 import './cart.css'
 import { useCart } from "../hooks/useCart";
 
+function CartItem ({imageUrl, name, price, quantity, addToCart,decreaseQuantity}) {
+    return(
+<li>
+    <img className="image_item_cart" 
+        src={imageUrl} 
+        alt={name} 
+    />
+    <div className="item_title">
+        <strong>{name}</strong> - S/{price}
+    </div>
+    <footer className="footer_cart">    
+        <small>Cantidad: {quantity}</small>
+        <button onClick={addToCart}>+</button>
+        <button onClick={decreaseQuantity}>-</button>
+    </footer>
+</li>
+    )
+}
+
 export const Cart = () =>{
 const idCart = useId()
-const {cart, clearCart} = useCart()
+const {cart, clearCart, addToCart, decreaseQuantity} = useCart()
     return(
         <>
         
@@ -17,18 +36,14 @@ const {cart, clearCart} = useCart()
             <aside className="cart">
                 <ul>
                     {
-                    cart.map( element =>(
-                        <li key={crypto.randomUUID()}>
-                            <img className="image_item_cart" src={element.imageUrl} alt={element.name} />
-                        <div className="item_title">
-                            <strong>{element.name}</strong> - S/{element.price}
-                        </div>
-                        <footer className="footer_cart">    
-                            <small>Cantidad: {element.quantity}</small>
-                            <button>+</button>
-                            <button>-</button>
-                        </footer>
-                        </li>
+                    cart.map( element => (
+                        <CartItem 
+                            key={element._id} 
+                            addToCart={()=> addToCart(element)}
+                            decreaseQuantity={()=>decreaseQuantity(element)}
+                            {...element}
+                        
+                        />
                     ))
                     
                     }

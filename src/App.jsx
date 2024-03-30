@@ -1,6 +1,6 @@
 import { Products } from "./componets/products";
 import {products as allProducts} from "./componets/data.json";
-import { useCallback, useContext, useState } from "react";
+import { useState } from "react";
 import { Header } from "./hearder";
 import {Footer} from './Footer'
 import { IS_DEVELOPMENT } from "./config";
