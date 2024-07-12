@@ -1,5 +1,5 @@
 import { useId } from "react"
-import  cartIcon  from "../icons/cart.png";
+import  cartIcon  from "../icons/note.png";
 import './cart.css'
 import { useCart } from "../hooks/useCart";
 
@@ -12,6 +12,7 @@ function CartItem ({imageUrl, name, price, quantity, addToCart,decreaseQuantity}
     />
     <div className="item_title">
         <strong>{name}</strong> - S/{price}
+        
     </div>
     <footer className="footer_cart">    
         <small>Cantidad: {quantity}</small>
@@ -34,6 +35,7 @@ const {cart, clearCart, addToCart, decreaseQuantity} = useCart()
             
             <input type="checkbox" id={idCart} hidden/>
             <aside className="cart">
+               <p>Proforma</p>
                 <ul>
                     {
                     cart.map( element => (
@@ -49,9 +51,10 @@ const {cart, clearCart, addToCart, decreaseQuantity} = useCart()
                     }
                     
                 </ul>
-                <button onClick={clearCart}>
+                <button onClick={clearCart} className="clean_button">
                     limpiar
                 </button>
+                <button>Registrar</button>
             </aside>
         
             
